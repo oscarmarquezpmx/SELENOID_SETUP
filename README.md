@@ -84,6 +84,12 @@ docker run -d --name selenoid-ui -p 8081:8080 aerokube/selenoid-ui:latest-releas
 # or, using a custom network
 docker run -d --name selenoid-ui --network bridge -p 8081:8080 aerokube/selenoid-ui:latest-release --selenoid-uri=http://selenoid:4444
 ```
+config  videos
+
+./config:
+browsers.json
+
+./videos:
 
 ### Additional Resources
 
@@ -91,11 +97,6 @@ docker run -d --name selenoid-ui --network bridge -p 8081:8080 aerokube/selenoid
 * [Docker Documentation](https://docs.docker.com/)
 
 This README file should provide a comprehensive guide for setting up Selenoid on both Linux and Windows platforms. If you encounter any issues or have further questions, please refer to the official documentation links provided above.
-oscar@AMD:~/Downloads/selenoid$ ls -R
-.:
-config  videos
 
-./config:
-browsers.json
 
-./videos:
+
