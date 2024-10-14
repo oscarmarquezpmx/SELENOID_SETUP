@@ -1,0 +1,27 @@
+
+# if you prefer a separate IP from other docker containers
+docker network create --driver=bridge --subnet=192.168.0.0/16 selenoid
+
+docker pull selenoid/vnc_chrome:124.0
+
+docker pull selenoid/video-recorder:latest-release
+
+docker run -d --name selenoid
+-p 4444:4444
+-e TZ=America/Mexico_City
+-v /var/run/docker.sock:/var/run/docker.sock
+-v /home/oscar/Downloads/selenoid/config/:/etc/selenoid/:ro
+-v /home/oscar/Downloads/selenoid/videos:/opt/selenoid/video/
+-e OVERRIDE_VIDEO_OUTPUT_DIR=/home/oscar/Downloads/selenoid/videos
+aerokube/selenoid:latest-release
+-limit 8
+
+
+#default bridge network
+docker run -d --name selenoid-ui -p 8081:8080 aerokube/selenoid-ui:latest-release --selenoid-uri=http://selenoid:4444
+#with network option
+docker run -d --name selenoid-ui --network selenoid -p 8081:8080 aerokube/selenoid-ui:latest-release --selenoid-uri=http://selenoid:4444
+
+
+#adding portainer for container handling
+docker run -d --network host -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest

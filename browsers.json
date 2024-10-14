@@ -1,0 +1,34 @@
+{
+        "firefox": {
+                "default": "latest",
+                "versions": {
+                        "latest": {
+                                "image": "selenoid/vnc:firefox",
+                                "port": "4444",
+                                "path": "/wd/hub",
+                                "tmpfs": {"/tmp":"size=512m"}
+                        }
+                }
+        },
+        "chrome": {
+                "default": "latest",
+                "versions": {
+                        "latest": {
+                                "image": "selenoid/vnc_chrome:124.0",
+                                "port": "4444",
+                                "tmpfs": {"/tmp":"size=512m"}
+                        }
+                }
+        },
+        "MicrosoftEdge": {
+                "default": "latest",
+                "versions": {
+                        "latest": {
+                                "image": "browsers/edge:latest",
+                                "port": "4444",
+                                "path": "/",
+                                "tmpfs": {"/tmp":"size=512m"}
+                        }
+                }
+        }
+}
